@@ -1,0 +1,27 @@
+INSERT INTO tbl_Foods(foodName, foodBrand, price, availability)
+VALUES ('Kokocrunch', 'Nestle', '450', 'Available')
+
+SELECT foodName AS 'Food Name', foodBrand AS 'Food Brand', price AS 'Price', availability AS 'Availability' FROM tbl_Foods
+
+
+UPDATE Foods SET foodName = '', foodBrand = '', price = '', availability = '' WHERE foodID = '';
+
+
+INSERT INTO tbl_Sales(foodID, quantity, dateAdded)
+VALUES ('', '', '')
+
+
+SELECT * FROM tbl_sales
+
+INSERT INTO tbl_Reservations (foodID, quantity, dateCreated)
+VALUES ('1', '2', GETDATE())
+
+SELECT foodID AS 'Food ID', foodName AS 'Food Name', foodBrand AS 'Food Brand', price AS 'Price', availability AS 'Availability' FROM tbl_Foods WHERE availability = 'Available'
+
+
+UPDATE tbl_Reservations SET foodID='1000' WHERE reservationID = '1000'
+
+SELECT reservationID AS 'Reservation ID', tbl_Reservations.foodID AS 'Food ID', foodName AS 'Food Name', foodBrand AS 'Food Brand', price AS 'Price', quantity AS 'Quantity', (price * quantity) AS 'Total Price'
+FROM tbl_Reservations 
+LEFT OUTER JOIN tbl_Foods
+ON tbl_Foods.foodID = tbl_Reservations.foodID
